@@ -1,64 +1,46 @@
 <?php
 
 
-add_action('woocommerce_product_options_general_product_data', 'woocommerce_product_custom_fields1');
+add_action('woocommerce_product_options_general_product_data', 'swc_woocommerce_product_custom_fields');
 // Save Fields
-add_action('woocommerce_process_product_meta', 'woocommerce_product_custom_fields_save');
-function woocommerce_product_custom_fields1()
+add_action('woocommerce_process_product_meta', 'swc_woocommerce_product_custom_fields_save');
+function swc_woocommerce_product_custom_fields()
 {
     global $woocommerce, $post;
-    echo '<div class="product_custom_field">';
+    ?>
+    <div class="product_custom_field">
 
+    <?php
     //Custom Product Seo Title Text
     woocommerce_wp_text_input(
-        array(
-            'id' => 'product_seo_title',
-            'placeholder' => 'Product Seo Title',
-            'label' => __('For Product Seo Title', 'woocommerce')
-        )
+        array('id' => 'product_seo_title', 'placeholder' => 'Product Seo Title', 'label' => __('For Product Seo Title', 'woocommerce') )
     );
 
     //Custom Product  Textarea
     woocommerce_wp_textarea_input(
-        array(
-            'id' => 'product_seo_description',
-            'placeholder' => 'Product Seo Descirption',
-            'label' => __('For Product Seo Descirption', 'woocommerce')
-        )
+        array( 'id' => 'product_seo_description', 'placeholder' => 'Product Seo Descirption', 'label' => __('For Product Seo Descirption', 'woocommerce') )
     );
 
     //Custom Product  Textarea
     woocommerce_wp_textarea_input(
-        array(
-            'id' => 'product_faq_textarea',
-            'placeholder' => 'Product FAQ Json Data',
-            'label' => __('For FAQ Use', 'woocommerce')
-        )
+        array( 'id' => 'product_faq_textarea', 'placeholder' => 'Product FAQ Json Data', 'label' => __('For FAQ Use', 'woocommerce') )
     );
 
     //Custom Product  Textarea
     woocommerce_wp_text_input(
-        array(
-            'id' => 'product_faq_script_input',
-            'placeholder' => 'Product FAQ Script',
-            'label' => __('For FAQ Schema', 'woocommerce')
-        )
+        array( 'id' => 'product_faq_script_input', 'placeholder' => 'Product FAQ Script', 'label' => __('For FAQ Schema', 'woocommerce') )
     );
-
+    //Custom Product checkbox 
     woocommerce_wp_checkbox( 
-    array( 
-        'id'            => '_custom_product_openai_GPT_3', 
-        'wrapper_class' => '', 
-        'label'         => __('Openai GPT-3', 'woocommerce' ), 
-        'description'   => __( 'Uncheck if You want to Update Product Description, Seo TItle and Seo Descirption ', 'woocommerce' ) 
+    array(  'id' => '_custom_product_openai_GPT_3',  'wrapper_class' => '',  'label' => __('Openai GPT-3', 'woocommerce' ),  'description'  => __( 'Uncheck if You want to Update Product Description, Seo TItle and Seo Descirption ', 'woocommerce' ) 
         )
     );
-    
-    echo '</div>';
+    ?>
+    </div>
+<?php
 }
-function woocommerce_product_custom_fields_save($post_id)
+function swc_woocommerce_product_custom_fields_save($post_id)
 {
-
     // Custom Product Textarea Field
     $woocommerce_custom_product_seo_title = $_POST['product_seo_title'];
     if (!empty($woocommerce_custom_product_seo_title))
@@ -80,7 +62,7 @@ function woocommerce_product_custom_fields_save($post_id)
     if (!empty($woocommerce_custom_product_schema))
     update_post_meta($post_id, 'product_faq_script_input', esc_html($woocommerce_custom_product_schema));
 
-    // Custom Product Textarea Field
+    // Custom Product checkbox
     $woocommerce_custom_product_checkbox = isset( $_POST['_custom_product_openai_GPT_3'] ) ? 'yes' : 'no';
     if (!empty($woocommerce_custom_product_checkbox))
     update_post_meta( $post_id, '_custom_product_openai_GPT_3', $woocommerce_custom_product_checkbox );  
