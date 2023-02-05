@@ -32,24 +32,30 @@ function pra_woocommerce_after_single_product_summary() {
                                     <h5 class="rank-math-question show"> <?php echo $arrays->question; ?></h5>
                                 <?php }
                                 else if (!empty($arrays->Question)){ ?>
-                                    <h5 class="rank-math-question show"><?php echo $arrays->Question; ?></h5>'; 
+                                    <h5 class="rank-math-question show"><?php echo $arrays->Question; ?></h5>
                                 <?php }
-                                else{ ?>
+                                else if(!empty($arrays->FAQ)){ ?>
                                     <h5 class="rank-math-question show"><?php echo $arrays->FAQ; ?></h5>
+                                <?php } 
+                                else{ ?>
+                                    <h5 class="rank-math-question show"><?php echo $arrays->q; ?></h5>
                                 <?php } ?>
+
                                 <div class="rank-math-answer showing">
                                     <?php
                                     if (!empty($arrays->answer)){ ?>
                                         <p><?php echo $arrays->answer; ?></p> 
                                     <?php }
                                     else if (!empty($arrays->Answer)){ ?>
-                                        <p><?php $arrays->Answer; ?></p> 
+                                        <p><?php echo $arrays->Answer; ?></p> 
                                     <?php }
+                                    else if(!empty($arrays->a)){ ?>
+                                        <p><?php echo $arrays->a; ?></p> 
+                                    <?php } 
                                     else{ ?>
                                         <p><?php echo $arrays->Answer; ?></p> 
                                     <?php } ?>
                                 </div>
-                            ?>
                         </div>
                     <?php }
                 ?>
