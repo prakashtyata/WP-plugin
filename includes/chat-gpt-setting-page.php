@@ -1,7 +1,7 @@
 <?php
 
 function chat_gpt_setting() { ?>
-  <div class="wrap">'
+  <div class="wrap">
     <h1>Theme Panel</h1>
     <form method="post" action="options.php">
       <?php
