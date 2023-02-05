@@ -124,7 +124,7 @@ function hook_javascript() {
         $temp_html .=' ]
             }
             </script>';
-        echo esc_js(temp_html)
+        echo esc_js(temp_html);
     }
 }
 add_action('wp_head', 'hook_javascript');
