@@ -11,9 +11,10 @@ function chat_gpt_setting() { ?>
         ?>
     </form>
   </div>
+<?php
+
 }
 
-<?php
 
 function display_api_element(){
   echo esc_html('<input type="text" name="api" id="api" placeholder="sk-05s1HVUzmbUDigR6ZXP0T3BlbkFJ7fqkFSRKbHnRdMm*****" value="'.get_option('api'). '" />'); 
