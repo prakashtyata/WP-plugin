@@ -16,30 +16,30 @@ function chat_gpt_setting() { ?>
 }
 
 
-function display_api_element(){
+function swc_display_api_element(){
   echo '<input type="text" name="api" id="api" placeholder="sk-05s1HVUzmbUDigR6ZXP0T3BlbkFJ7fqkFSRKbHnRdMm*****" value="'.get_option('api'). '" />'; 
 }
 
-function display_model_element(){
+function swc_display_model_element(){
   echo '<input type="text" name="model" id="model" placeholder="text-davinci-003" value="'. get_option('model'). '" />';
 }
 
-function display_max_tokens_element(){
+function swc_display_max_tokens_element(){
   echo '<input type="text" name="max_tokens" id="max_tokens" value="'. get_option('max_tokens').'" />';
 }
 
-function display_theme_panel_fields()
+function swc_display_theme_panel_fields()
 {
   add_settings_section("section", "API Settings", null, "theme-options");
 
-  add_settings_field("api", "Chat GPT API", "display_api_element", "theme-options", "section");
+  add_settings_field("api", "Chat GPT API", "swc_display_api_element", "theme-options", "section");
   register_setting("section", "api");
   
-  add_settings_field("model", "Chat GPT Model", "display_model_element", "theme-options", "section");
+  add_settings_field("model", "Chat GPT Model", "swc_display_model_element", "theme-options", "section");
   register_setting("section", "model");
 
-  add_settings_field("max_tokens", "Chat GPT Max Tokens", "display_max_tokens_element", "theme-options", "section");
+  add_settings_field("max_tokens", "Chat GPT Max Tokens", "swc_display_max_tokens_element", "theme-options", "section");
   register_setting("section", "max_tokens");
 }
 
-add_action("admin_init", "display_theme_panel_fields");
+add_action("admin_init", "swc_display_theme_panel_fields");

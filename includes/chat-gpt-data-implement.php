@@ -1,6 +1,6 @@
 <?php
 
-function change_each_product_title( $title ) {
+function swc_change_each_product_title( $title ) {
     if (is_product()){
         global $post;
         $seo_title = get_post_meta( $post->ID, 'product_seo_title', true );
@@ -10,11 +10,11 @@ function change_each_product_title( $title ) {
     return $title;
 }
 
-add_filter( 'pre_get_document_title', 'change_each_product_title', 9999 );
+add_filter( 'pre_get_document_title', 'swc_change_each_product_title', 9999 );
 
 
 
-function pra_woocommerce_after_single_product_summary() {
+function swc_woocommerce_after_single_product_summary() {
         
     $devlink = get_post_meta( get_the_ID(), 'product_faq_textarea', true );
     $dev_faq = json_decode($devlink);
@@ -82,10 +82,10 @@ function pra_woocommerce_after_single_product_summary() {
     }
 
 } 
-  add_action( 'woocommerce_after_single_product_summary', 'pra_woocommerce_after_single_product_summary');
+  add_action( 'woocommerce_after_single_product_summary', 'swc_woocommerce_after_single_product_summary');
 
 
-function hook_javascript() {
+function swc_hook_javascript() {
     
     $devlink = get_post_meta( get_the_ID(), 'product_faq_textarea', true );
     $dev_faq = json_decode($devlink);
@@ -133,13 +133,13 @@ function hook_javascript() {
         echo esc_js(temp_html);
     }
 }
-add_action('wp_head', 'hook_javascript');
+add_action('wp_head', 'swc_hook_javascript');
 
 
 
 
 
-function dev_meta_description() {
+function swc_meta_description() {
     if (is_product()){
         global $post;
         $seo_title = get_post_meta( $post->ID, 'product_seo_description', true ); ?>
@@ -147,4 +147,4 @@ function dev_meta_description() {
     <?php }
 
 }
-add_action( 'wp_head', 'dev_meta_description');
+add_action( 'wp_head', 'swc_meta_description');
