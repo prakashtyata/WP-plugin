@@ -17,15 +17,15 @@ function chat_gpt_setting() { ?>
 
 
 function display_api_element(){
-  echo esc_html('<input type="text" name="api" id="api" placeholder="sk-05s1HVUzmbUDigR6ZXP0T3BlbkFJ7fqkFSRKbHnRdMm*****" value="'.get_option('api'). '" />'); 
+  echo '<input type="text" name="api" id="api" placeholder="sk-05s1HVUzmbUDigR6ZXP0T3BlbkFJ7fqkFSRKbHnRdMm*****" value="'.get_option('api'). '" />'; 
 }
 
 function display_model_element(){
-  echo esc_html('<input type="text" name="model" id="model" placeholder="text-davinci-003" value="'. get_option('model'). '" />');
+  echo '<input type="text" name="model" id="model" placeholder="text-davinci-003" value="'. get_option('model'). '" />';
 }
 
 function display_max_tokens_element(){
-  echo esc_html('<input type="text" name="max_tokens" id="max_tokens" value="'. get_option('max_tokens').'" />');
+  echo '<input type="text" name="max_tokens" id="max_tokens" value="'. get_option('max_tokens').'" />';
 }
 
 function display_theme_panel_fields()
